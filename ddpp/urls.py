@@ -14,10 +14,38 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from logics import user
+from ddpp.logics import user
+from django.conf.urls import url, include
+from django.contrib.auth.models import User
+#from rest_framework import serializers, viewsets, routers
 
+# # Serializers define the API representation.
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('url', 'username', 'email', 'is_staff')
+#
+#
+# # ViewSets define the view behavior.
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#
+#
+# # Routers provide a way of automatically determining the URL conf.
+# router = routers.DefaultRouter()
+# router.register(r'users', UserViewSet)
+#
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+
+#url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+# url(r'^', include('snippets.urls')),
+# url(r'^', include(router.urls)),
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/', user.test),
+    url(r'^get_tender/$', user.get_tender),
+    url(r'^bid_vaild/$', user.bid_vaild),
+    # path('admin/', admin.site.urls),
+    # path('user/', user.test),
 ]
